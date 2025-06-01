@@ -3,6 +3,9 @@
 import Link from 'next/link';
 import styles from './register.module.css';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@/services/firebase';
+import { useRouter } from 'next/navigation';
 
 type Inputs = {
   email: string;
@@ -11,14 +14,24 @@ type Inputs = {
 };
 
 export default function Register() {
+  const router = useRouter();
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
 
-  const submitForm = (data: Inputs) => {
-    console.log(data);
+  const submitForm = async (data: Inputs) => {
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then(() => {
+        reset();
+        router.push('/');
+      })
+      .catch((e) => {
+        console.log('catch ', e.message);
+        alert('Something went wrong please try again');
+      });
   };
 
   return (

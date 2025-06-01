@@ -3,6 +3,9 @@
 import Link from 'next/link';
 import styles from './login.module.css';
 import { useForm } from 'react-hook-form';
+import { auth } from '@/services/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 
 type Inputs = {
   email: string;
@@ -10,6 +13,7 @@ type Inputs = {
 };
 
 export default function Login() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -17,7 +21,14 @@ export default function Login() {
   } = useForm<Inputs>();
 
   const submitForm = (data: Inputs) => {
-    console.log(data);
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then(() => {
+        router.push('/');
+      })
+      .catch((e) => {
+        console.log('Login Error ', e.message);
+        alert('Please try Again');
+      });
   };
 
   return (
