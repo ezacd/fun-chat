@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './login.module.css';
 
 export default function Lofin() {
@@ -20,6 +21,12 @@ export default function Lofin() {
             Submit
           </button>
         </form>
+        <p className={styles.dontHaveAccountText}>
+          Don't have an account?{' '}
+          <Link href="/register" className={styles.dontHaveAccountTextLink}>
+            Register here
+          </Link>
+        </p>
       </div>
     </div>
   );

@@ -1,0 +1,83 @@
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1c2b3a;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  width: 100vw;
+}
+
+.registerBox {
+  background-color: #2a3b4d;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.registerText {
+  text-align: center;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.registerFormLabel {
+  display: flex;
+  flex-direction: column;
+  color: #cbd6e2;
+  font-size: 14px;
+}
+
+.registerFromInput {
+  margin-top: 6px;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #3c4f65;
+  background-color: #1e2c3b;
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.registerFromInput:focus {
+  border-color: #0088cc;
+}
+
+.registerFormSubmit {
+  margin-top: 12px;
+  padding: 12px;
+  background-color: #0088cc;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.registerFormSubmit:hover {
+  background-color: #007ab8;
+}
+
+.haveAccountText {
+  font-size: 14px;
+  color: #cccccc;
+}
+
+.haveAccountTextLink {
+  text-decoration: none;
+}

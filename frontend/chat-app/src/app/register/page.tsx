@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './register.module.css';
 
 export default function Register() {
@@ -25,6 +26,12 @@ export default function Register() {
             Submit
           </button>
         </form>
+        <p className={styles.haveAccountText}>
+          Already have an account?{' '}
+          <Link href="/login" className={styles.haveAccountTextLink}>
+            Login here
+          </Link>
+        </p>
       </div>
     </div>
   );
