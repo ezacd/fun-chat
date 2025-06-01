@@ -69,8 +69,23 @@
   transition: background-color 0.2s ease;
 }
 
-.registerFormSubmit:hover {
+.registerFormSubmit:active {
+  transform: scale(0.98);
+}
+
+.registerFormSubmit:disabled {
+  background-color: #444444;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.registerFormSubmit:active:hover {
   background-color: #007ab8;
+}
+
+.registerFormSubmit:disabled:hover {
+  background-color: #444444;
 }
 
 .haveAccountText {

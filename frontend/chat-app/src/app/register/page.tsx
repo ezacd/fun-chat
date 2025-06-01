@@ -6,6 +6,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/services/firebase';
 import { useRouter } from 'next/navigation';
+import { validationSchema } from './validationSchema';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 type Inputs = {
   email: string;
@@ -19,8 +21,11 @@ export default function Register() {
     register,
     reset,
     handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
+    formState: { errors, isValid },
+  } = useForm<Inputs>({
+    resolver: yupResolver(validationSchema),
+    mode: 'onChange',
+  });
 
   const submitForm = async (data: Inputs) => {
     createUserWithEmailAndPassword(auth, data.email, data.password)
@@ -49,6 +54,9 @@ export default function Register() {
               type="email"
               {...register('email')}
             />
+            <p className={styles.registrationFormError}>
+              {errors.email ? errors.email?.message : ''}
+            </p>
           </label>
 
           <label className={styles.registerFormLabel}>
@@ -58,6 +66,9 @@ export default function Register() {
               type="password"
               {...register('password')}
             />
+            <p className={styles.registrationFormError}>
+              {errors.password ? errors.password?.message : ''}
+            </p>
           </label>
 
           <label className={styles.registerFormLabel}>
@@ -67,9 +78,16 @@ export default function Register() {
               type="password"
               {...register('confPassword')}
             />
+            <p className={styles.registrationFormError}>
+              {errors.confPassword ? errors.confPassword?.message : ''}
+            </p>
           </label>
 
-          <button className={styles.registerFormSubmit} type="submit">
+          <button
+            className={styles.registerFormSubmit}
+            type="submit"
+            disabled={!isValid}
+          >
             Submit
           </button>
         </form>

@@ -69,8 +69,16 @@
   transition: background-color 0.2s ease;
 }
 
+.loginFormSubmit:disabled {
+  background-color: #444444;
+}
+
 .loginFormSubmit:hover {
   background-color: #007ab8;
+}
+
+.loginFormSubmit:disabled:hover {
+  background-color: #444444;
 }
 
 .dontHaveAccountText {

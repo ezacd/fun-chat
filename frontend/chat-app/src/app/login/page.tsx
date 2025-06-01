@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import { auth } from '@/services/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { validationSchema } from './validationSchema';
 
 type Inputs = {
   email: string;
@@ -17,8 +19,11 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
+    formState: { errors, isValid },
+  } = useForm<Inputs>({
+    resolver: yupResolver(validationSchema),
+    mode: 'onChange',
+  });
 
   const submitForm = (data: Inputs) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
@@ -43,6 +48,9 @@ export default function Login() {
               type="email"
               {...register('email')}
             />
+            <p className={styles.registrationFormError}>
+              {errors.email ? errors.email?.message : ''}
+            </p>
           </label>
 
           <label className={styles.loginFormLabel}>
@@ -52,9 +60,16 @@ export default function Login() {
               type="password"
               {...register('password')}
             />
+            <p className={styles.registrationFormError}>
+              {errors.password ? errors.password?.message : ''}
+            </p>
           </label>
 
-          <button className={styles.loginFormSubmit} type="submit">
+          <button
+            className={styles.loginFormSubmit}
+            type="submit"
+            disabled={!isValid}
+          >
             Submit
           </button>
         </form>

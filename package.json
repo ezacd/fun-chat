@@ -19,11 +19,13 @@
   "homepage": "https://github.com/ezacd/fun-chat#readme",
   "dependencies": {
     "-": "^0.0.1",
+    "@hookform/resolvers": "^5.0.1",
     "dom": "^0.0.3",
     "firebase": "^11.8.1",
     "hooks": "^0.3.2",
     "react": "^19.1.0",
     "react-hook-form": "^7.56.4",
-    "router": "^2.2.0"
+    "router": "^2.2.0",
+    "yup": "^1.6.1"
   }
 }
