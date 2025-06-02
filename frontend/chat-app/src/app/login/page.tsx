@@ -8,6 +8,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { validationSchema } from './validationSchema';
+import { setCookie } from 'cookies-next';
 
 type Inputs = {
   email: string;
@@ -19,21 +20,32 @@ export default function Login() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
   } = useForm<Inputs>({
     resolver: yupResolver(validationSchema),
     mode: 'onChange',
   });
 
-  const submitForm = (data: Inputs) => {
-    signInWithEmailAndPassword(auth, data.email, data.password)
-      .then(() => {
-        router.push('/');
-      })
-      .catch((e) => {
-        console.log('Login Error ', e.message);
-        alert('Please try Again');
-      });
+  const submitForm = async (data: Inputs) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password,
+      );
+
+      reset();
+
+      const token = await userCredential.user.getIdToken();
+
+      setCookie('token', token);
+
+      router.push('/');
+    } catch (e) {
+      console.log('Login Error', (e as Error).message);
+      alert('Please try again');
+    }
   };
 
   return (

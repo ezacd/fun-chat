@@ -1,3 +1,11 @@
+'use client';
+
+import { deleteCookie } from 'cookies-next';
+
 export default function Home() {
-  return <>123</>;
+  const logOut = () => {
+    deleteCookie('token');
+  };
+
+  return <button onClick={logOut}>Log Out</button>;
 }

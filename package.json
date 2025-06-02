@@ -20,6 +20,7 @@
   "dependencies": {
     "-": "^0.0.1",
     "@hookform/resolvers": "^5.0.1",
+    "cookies-next": "^6.0.0",
     "dom": "^0.0.3",
     "firebase": "^11.8.1",
     "hooks": "^0.3.2",

@@ -8,6 +8,7 @@ import { auth } from '@/services/firebase';
 import { useRouter } from 'next/navigation';
 import { validationSchema } from './validationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { setCookie } from 'cookies-next';
 
 type Inputs = {
   email: string;
@@ -28,15 +29,24 @@ export default function Register() {
   });
 
   const submitForm = async (data: Inputs) => {
-    createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then(() => {
-        reset();
-        router.push('/');
-      })
-      .catch((e) => {
-        console.log('catch ', e.message);
-        alert('Something went wrong please try again');
-      });
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password,
+      );
+
+      reset();
+
+      const token = await userCredential.user.getIdToken();
+
+      setCookie('token', token);
+
+      router.push('/');
+    } catch (e) {
+      console.log('catch ', (e as Error).message);
+      alert('Something went wrong, please try again');
+    }
   };
 
   return (
