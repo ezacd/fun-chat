@@ -96,3 +96,9 @@
 .haveAccountTextLink {
   text-decoration: none;
 }
+
+.registrationFormFirebaseError {
+  font-size: 14px;
+  margin: 0;
+  color: #cbd6e2;
+}

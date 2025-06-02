@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { validationSchema } from './validationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { setCookie } from 'cookies-next';
+import { useState } from 'react';
 
 type Inputs = {
   email: string;
@@ -17,6 +18,7 @@ type Inputs = {
 };
 
 export default function Register() {
+  const [firebaseError, setFirebaseError] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -44,8 +46,7 @@ export default function Register() {
 
       router.push('/');
     } catch (e) {
-      console.log('catch ', (e as Error).message);
-      alert('Something went wrong, please try again');
+      setFirebaseError(true);
     }
   };
 
@@ -100,6 +101,13 @@ export default function Register() {
           >
             Submit
           </button>
+          {firebaseError ? (
+            <p className={styles.registrationFormFirebaseError}>
+              This account already exists
+            </p>
+          ) : (
+            ''
+          )}
         </form>
         <p className={styles.haveAccountText}>
           Already have an account?{' '}
