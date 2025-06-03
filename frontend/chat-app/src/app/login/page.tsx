@@ -9,7 +9,6 @@ import { useRouter } from 'next/navigation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { validationSchema } from './validationSchema';
 import { setCookie } from 'cookies-next';
-import React from 'react';
 
 type Inputs = {
   email: string;
