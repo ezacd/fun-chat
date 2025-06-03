@@ -2,21 +2,24 @@
   "name": "fun-chat",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "dev": "pnpm --filter chat-app dev"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ezacd/fun-chat.git"
-  },
+  "description": "",
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "homepage": "https://github.com/ezacd/fun-chat#readme",
   "bugs": {
     "url": "https://github.com/ezacd/fun-chat/issues"
   },
-  "homepage": "https://github.com/ezacd/fun-chat#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezacd/fun-chat.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm --filter chat-app dev",
+    "test": "pnpm --filter chat-app test"
+  },
   "dependencies": {
     "-": "^0.0.1",
     "@hookform/resolvers": "^5.0.1",
@@ -28,5 +31,17 @@
     "react-hook-form": "^7.56.4",
     "router": "^2.2.0",
     "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.3.0",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "babel-jest": "30.0.0-beta.3",
+    "jest-environment-jsdom": "30.0.0-beta.3"
   }
 }
