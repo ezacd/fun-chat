@@ -13,13 +13,30 @@ jest.mock('next/navigation', () => ({
 }));
 
 jest.mock('firebase/auth', () => {
+  // 1. Получаем реальный оригинальный модуль, чтобы сохранить все остальные функции/константы
   const originalModule = jest.requireActual('firebase/auth');
+
   return {
+    // 2. «Спредим» оригинальный модуль, чтобы все стандартные экспорты firebase/auth остались доступными,
+    //    кроме тех, которые мы перечислим дальше (getAuth, signInWithEmailAndPassword).
     ...originalModule,
+
+    // 3. Переопределяем функцию getAuth на свою «пустую» версию, чтобы в тестах
+    //    не происходила настоящая инициализация Firebase Auth.
+    //    Мы возвращаем объект с currentUser: null,
+    //    чтобы Login-компонент «думал», что пользователь не залогинен.
     getAuth: () => ({ currentUser: null }),
+
+    // 4. Переопределяем signInWithEmailAndPassword на мок-функцию jest.fn().
+    //    При вызове она возвращает Promise.resolve({ user: { getIdToken: … } }).
+    //    Таким образом, когда компонент вызывает signInWithEmailAndPassword(auth, email, password),
+    //    он не обращается к реальному Firebase, а получает сразу «успешный» результат с фейковым токеном.
     signInWithEmailAndPassword: jest.fn(() =>
       Promise.resolve({
-        user: { getIdToken: () => Promise.resolve('mock-token') },
+        user: {
+          // 4a. Метод getIdToken здесь тоже возвращает фейковый токен «mock-token».
+          getIdToken: () => Promise.resolve('mock-token'),
+        },
       }),
     ),
   };
@@ -61,7 +78,7 @@ describe('Login page', () => {
 
     await waitFor(() => {
       expect(signInWithEmailAndPassword).toHaveBeenCalledWith(
-        expect.anything(), // auth
+        expect.anything(),
         'test@gmail.com',
         'A4385d11!qwe',
       );
