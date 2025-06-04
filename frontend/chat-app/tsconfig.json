@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,7 +15,10 @@
     "incremental": true,
     "types": [
       "jest",
-      "@testing-library/jest-dom"
+      "@testing-library/jest-dom",
+      "@wdio/globals/types",
+      "@wdio/mocha-framework",
+      "node"
     ],
     "plugins": [
       {
@@ -27,9 +26,7 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
@@ -38,9 +35,10 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/__mocks__/firebase.js",
-    "src/__mocks__/styleMock.ts"
+    "src/__mocks__/styleMock.ts",
+    "test/**/*.ts",
+    "wdio.conf.ts",
+    "test/pageobjects/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

@@ -57,6 +57,7 @@ export default function Login() {
             E-mail:
             <input
               className={styles.loginFromInput}
+              id="loginFromInputEmail"
               type="email"
               {...register('email')}
             />
@@ -69,6 +70,7 @@ export default function Login() {
             Password:
             <input
               className={styles.loginFromInput}
+              id="loginFromInputPassword"
               type="password"
               {...register('password')}
             />
