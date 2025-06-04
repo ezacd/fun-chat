@@ -21,6 +21,7 @@
     "test": "pnpm --filter chat-app test",
     "test:coverage": "pnpm --filter chat-app test:coverage",
     "test:watch": "pnpm --filter chat-app test:watch",
+    "test:e2e": "pnpm --filter chat-app test:e2e",
     "serv": "pnpm --filter fun-chat-server start"
   },
   "dependencies": {
