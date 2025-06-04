@@ -13,10 +13,13 @@ describe('My Login application', () => {
         return cookie.length > 0;
       },
       {
-        timeout: 10000,
+        timeout: 5000,
         timeoutMsg:
           'Expected to see the "token" cookie, but it did not appear within 5 seconds.',
       },
     );
+    const tokenCookie = await browser.getCookies('token');
+
+    expect(tokenCookie).toBeDefined();
   });
 });
