@@ -1,0 +1,24 @@
+.aside {
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid rgb(184, 184, 184);
+  width: 25vw;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.asideUl {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.asideLi {
+  border-bottom: 1px solid rgb(47, 62, 81);
+  padding: 10px;
+  cursor: pointer;
+}

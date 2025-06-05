@@ -1,15 +1,14 @@
 'use client';
 
-import { deleteCookie } from 'cookies-next';
-import { useRouter } from 'next/navigation';
+import Aside from '@/components/Aside';
+import styles from './page.module.css';
+import Header from '@/components/Header';
 
 export default function Home() {
-  const router = useRouter();
-
-  const logOut = () => {
-    deleteCookie('token');
-    router.push('/login');
-  };
-
-  return <button onClick={logOut}>Log Out</button>;
+  return (
+    <div className={styles.app}>
+      <Header />
+      <Aside />
+    </div>
+  );
 }
