@@ -15,7 +15,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.appUserName}>User</div>
       <h1 className={styles.headerH1}>Fun Chat</h1>
-      <button className={styles.appLogOutButton} onClick={logOut}>
+      <button className={styles.appLogOutButton} onClick={logOut} type="button">
         <LogOut className={styles.logOut} />
       </button>
     </header>
