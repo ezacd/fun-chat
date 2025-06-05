@@ -1,5 +1,5 @@
 import { deleteCookie } from 'cookies-next';
-import LogOut from '../assets/icons/logout.svg';
+import LogOut from '../../assets/icons/logout.svg';
 import { useRouter } from 'next/navigation';
 import styles from './Header.module.css';
 

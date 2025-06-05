@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  border-top: 2px solid rgb(184, 184, 184);
+}
+
+.footer a {
+  cursor: pointer;
+}
