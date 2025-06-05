@@ -3,7 +3,6 @@
   flex-direction: column;
   border-right: 2px solid rgb(184, 184, 184);
   width: 25vw;
-  height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
   box-sizing: border-box;

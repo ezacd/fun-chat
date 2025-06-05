@@ -1,0 +1,16 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.mainSection {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.chatSection {
+  width: 100%;
+}
