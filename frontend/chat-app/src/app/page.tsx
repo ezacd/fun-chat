@@ -1,10 +1,10 @@
 'use client';
 
-import Aside from '@/components/app/Aside';
+import Aside from '@/components/Aside';
 import styles from '../styles/page.module.css';
-import Header from '@/components/app/Header';
-import Footer from '@/components/app/Footer';
-import Chat from '@/components/app/Chat';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Chat from '@/components/Chat';
 
 export default function MainPage() {
   return (

@@ -1,7 +1,7 @@
 import { deleteCookie } from 'cookies-next';
-import LogOut from '../../assets/icons/logout.svg';
+import LogOut from '../assets/icons/logout.svg';
 import { useRouter } from 'next/navigation';
-import styles from '../../styles/Header.module.css';
+import styles from '../styles/Header.module.css';
 
 export default function Header() {
   const router = useRouter();
