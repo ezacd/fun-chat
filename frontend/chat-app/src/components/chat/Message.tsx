@@ -6,11 +6,9 @@ import ChangeSvgButton from '../../assets/icons/change.svg';
 
 type Props = {
   text: string;
-  onEdit: () => void;
-  onDelete: () => void;
 };
 
-export default function Message({ text, onEdit, onDelete }: Props) {
+export default function Message({ text }: Props) {
   const [menuPos, setMenuPos] = useState<{ x: number; y: number } | null>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +50,7 @@ export default function Message({ text, onEdit, onDelete }: Props) {
         <ul className={styles.contextMenu}>
           <li
             onClick={() => {
-              onEdit();
+              // onEdit();
               // onClick();
             }}
           >
@@ -62,7 +60,7 @@ export default function Message({ text, onEdit, onDelete }: Props) {
           </li>
           <li
             onClick={() => {
-              onDelete();
+              // onDelete();
               // onClick();
             }}
           >
