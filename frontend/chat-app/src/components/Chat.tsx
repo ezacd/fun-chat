@@ -6,9 +6,9 @@ export default function Chat() {
   return (
     <section className={styles.chatSection}>
       <section className={styles.correspondence}>
-        <Message />
-        <Message />
-        <Message />
+        <Message text="1" />
+        <Message text="2" />
+        <Message text="3" />
       </section>
       <ChatInput />
     </section>

@@ -33,21 +33,11 @@ export default function ChatInput() {
         onChange={(e) => setText(e.target.value)}
       />
 
-      <button
-        type="button"
-        className={styles.iconButton}
-        aria-label="Сhoose emoji"
-      >
+      <button type="button" className={styles.iconButton}>
         <Emoji className={styles.emoji} />
       </button>
 
-      <button
-        type="submit"
-        className={styles.iconButton}
-        aria-label={
-          text.trim() ? 'Отправить сообщение' : 'Записать голосовое сообщение'
-        }
-      >
+      <button type="submit" className={styles.iconButton}>
         <Send className={styles.send} />
       </button>
     </form>
