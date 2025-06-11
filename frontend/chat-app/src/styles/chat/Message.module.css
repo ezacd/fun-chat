@@ -1,5 +1,5 @@
 .message {
-  transition: transform 0.3s ease;
+  transition: margin 0.25s ease, padding 0.25s ease;
 }
 
 .messegeSender {
@@ -34,9 +34,17 @@
 .contextMenu {
   display: flex;
   flex-direction: row;
-  list-style-type: none;
+
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.25s ease;
   margin: 0;
   padding: 0;
+  list-style: none;
+}
+
+.contextMenu.open {
+  max-height: 200px;
 }
 
 .messageDeleteButton,

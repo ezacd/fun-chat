@@ -9,35 +9,22 @@ type Props = {
 };
 
 export default function Message({ text }: Props) {
-  const [menuPos, setMenuPos] = useState<{ x: number; y: number } | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault();
-    setMenuPos({ x: e.clientX, y: e.clientY });
-  };
-
-  const handleClick = () => {
-    if (menuPos) setMenuPos(null);
+    setMenuOpen(true);
   };
 
   useEffect(() => {
-    const handleClickOutside = () => {
-      setMenuPos(null);
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [menuPos]);
+    const onClick = () => setMenuOpen(false);
+    document.addEventListener('mousedown', onClick);
+    return () => document.removeEventListener('mousedown', onClick);
+  }, []);
 
   return (
-    <div
-      className={styles.message}
-      onContextMenu={handleContextMenu}
-      onClick={handleClick}
-    >
+    <div className={styles.message} onContextMenu={handleContextMenu}>
       <p className={styles.messegeSender}>User</p>
       <div className={styles.messageBox}>
         <p className={styles.messegeText}>{text}</p>
@@ -46,30 +33,28 @@ export default function Message({ text }: Props) {
           <MessageTime />
         </div>
       </div>
-      {menuPos && (
-        <ul className={styles.contextMenu}>
-          <li
-            onClick={() => {
-              // onEdit();
-              // onClick();
-            }}
-          >
-            <button type="button" className={styles.messageDeleteButton}>
-              <DeleteSvgButton className={styles.deleteButton} />
-            </button>
-          </li>
-          <li
-            onClick={() => {
-              // onDelete();
-              // onClick();
-            }}
-          >
-            <button type="button" className={styles.messageChangeButton}>
-              <ChangeSvgButton className={styles.changeButton} />
-            </button>
-          </li>
-        </ul>
-      )}
+      <ul className={`${styles.contextMenu} ${menuOpen ? styles.open : ''}`}>
+        <li
+          onClick={() => {
+            // onEdit();
+            // onClick();
+          }}
+        >
+          <button type="button" className={styles.messageDeleteButton}>
+            <DeleteSvgButton className={styles.deleteButton} />
+          </button>
+        </li>
+        <li
+          onClick={() => {
+            // onDelete();
+            // onClick();
+          }}
+        >
+          <button type="button" className={styles.messageChangeButton}>
+            <ChangeSvgButton className={styles.changeButton} />
+          </button>
+        </li>
+      </ul>
     </div>
   );
 }
