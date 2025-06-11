@@ -10,8 +10,6 @@ type Props = {
 
 export default function Message({ text }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault();
     setMenuOpen(true);
@@ -36,7 +34,6 @@ export default function Message({ text }: Props) {
       <ul className={`${styles.contextMenu} ${menuOpen ? styles.open : ''}`}>
         <li
           onClick={() => {
-            // onEdit();
             // onClick();
           }}
         >
@@ -46,7 +43,6 @@ export default function Message({ text }: Props) {
         </li>
         <li
           onClick={() => {
-            // onDelete();
             // onClick();
           }}
         >
